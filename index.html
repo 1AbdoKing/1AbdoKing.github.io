@@ -87,6 +87,13 @@
       color: #fff !important;
     }
 
+    footer {
+      position: absolute;
+      bottom: 10px;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+
     @keyframes pulse {
       0% { transform: scale(1); }
       50% { transform: scale(1.05); }
@@ -148,6 +155,9 @@
   <!-- Share Button -->
   <button class="share-btn" onclick="copyLink()">📤 Sifto L'sahbk Ytkhla3 shwya</button>
 
+  <!-- Footer -->
+  <footer>Created by a_m_i_k_i555</footer>
+
   <script>
     const targetDate = new Date("May 29, 2025 00:00:00").getTime();
 
@@ -179,7 +189,6 @@
       music.volume = 0.3;
       music.play();
 
-      // Change button text and color
       btn.textContent = "Mal 9lbk Kaydrb B'Jhd?";
       btn.classList.add("clicked");
     }
@@ -192,7 +201,6 @@
     }
 
     const interval = setInterval(updateCountdown, 1000);
-<p style="margin-top: 40px; font-size: 0.9rem; color: #aaa;">Created by a_m_i_k_i555</p>
     updateCountdown();
   </script>
 </body>
