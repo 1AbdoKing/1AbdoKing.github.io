@@ -82,6 +82,11 @@
       background-color: #00aacc;
     }
 
+    .clicked {
+      background-color: #ff4d4d !important;
+      color: #fff !important;
+    }
+
     @keyframes pulse {
       0% { transform: scale(1); }
       50% { transform: scale(1.05); }
@@ -111,12 +116,12 @@
 <body>
   <h1>Bacanoriya Ba9i Liha</h1>
 
-  <!-- Wrk 3la Hna Button -->
-  <button id="wrk-btn" onclick="playMusic()" class="share-btn">Wrk 3la Hna</button>
+  <!-- زر لتشغيل الموسيقى -->
+  <button id="work-btn" onclick="playMusic()" class="share-btn">Wrk 3la Hna</button>
 
-  <!-- Local Sound Effect -->
+  <!-- ملف الموسيقى -->
   <audio id="bg-music" loop>
-    <source src="/mnt/data/Normal Heart Sound- normal speed.mp3" type="audio/mp3">
+    <source src="Normal Heart Sound- normal speed.mp3" type="audio/mp3">
     Your browser does not support the audio element.
   </audio>
 
@@ -170,14 +175,13 @@
 
     function playMusic() {
       const music = document.getElementById('bg-music');
-      const button = document.getElementById('wrk-btn');
-
-      music.volume = 0.5;
+      const btn = document.getElementById('work-btn');
+      music.volume = 0.3;
       music.play();
 
-      button.textContent = "Mal 9lbk Kaydrb B'Jhd?";
-      button.style.backgroundColor = "#ff4b4b";
-      button.style.color = "#fff";
+      // Change button text and color
+      btn.textContent = "Mal 9lbk Kaydrb B'Jhd?";
+      btn.classList.add("clicked");
     }
 
     function copyLink() {
