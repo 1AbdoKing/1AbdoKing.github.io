@@ -111,12 +111,12 @@
 <body>
   <h1>Bacanoriya Ba9i Liha</h1>
 
-  <!-- زر لتشغيل الموسيقى -->
-  <button onclick="playMusic()" class="share-btn">Wrk 3la Hna</button>
+  <!-- Wrk 3la Hna Button -->
+  <button id="wrk-btn" onclick="playMusic()" class="share-btn">Wrk 3la Hna</button>
 
-  <!-- ملف الموسيقى -->
+  <!-- Local Sound Effect -->
   <audio id="bg-music" loop>
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+    <source src="/mnt/data/Normal Heart Sound- normal speed.mp3" type="audio/mp3">
     Your browser does not support the audio element.
   </audio>
 
@@ -170,8 +170,14 @@
 
     function playMusic() {
       const music = document.getElementById('bg-music');
-      music.volume = 0.3;
+      const button = document.getElementById('wrk-btn');
+
+      music.volume = 0.5;
       music.play();
+
+      button.textContent = "Mal 9lbk Kaydrb B'Jhd?";
+      button.style.backgroundColor = "#ff4b4b";
+      button.style.color = "#fff";
     }
 
     function copyLink() {
