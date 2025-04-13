@@ -111,8 +111,11 @@
 <body>
   <h1>Bacanoriya Ba9i Liha</h1>
 
-  <!-- 🎵 Background music -->
-  <audio autoplay loop hidden id="bg-music" volume="0.3">
+  <!-- زر لتشغيل الموسيقى -->
+  <button onclick="playMusic()" class="share-btn">🎵 Play Music</button>
+
+  <!-- ملف الموسيقى -->
+  <audio id="bg-music" loop>
     <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
     Your browser does not support the audio element.
   </audio>
@@ -163,6 +166,12 @@
       document.getElementById("hours").textContent = hours;
       document.getElementById("minutes").textContent = minutes;
       document.getElementById("seconds").textContent = seconds;
+    }
+
+    function playMusic() {
+      const music = document.getElementById('bg-music');
+      music.volume = 0.3;
+      music.play();
     }
 
     function copyLink() {
