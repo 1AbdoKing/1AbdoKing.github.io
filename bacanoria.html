@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bacanoriya Countdown</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      color: #f0f0f0;
+    }
+
+    .countdown-container {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .time-box {
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 15px;
+      padding: 20px 25px;
+      min-width: 100px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+
+    .time-box:hover {
+      transform: translateY(-5px);
+    }
+
+    .number {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #00d8ff;
+    }
+
+    .label {
+      font-size: 1rem;
+      margin-top: 5px;
+      color: #ccc;
+    }
+
+    .finished-message {
+      font-size: 2rem;
+      color: #00ff88;
+      background-color: rgba(0, 0, 0, 0.4);
+      padding: 20px;
+      border-radius: 15px;
+      animation: pulse 1s infinite;
+    }
+
+    .share-btn {
+      margin-top: 30px;
+      padding: 12px 25px;
+      font-size: 1rem;
+      background-color: #00d8ff;
+      color: #111;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .share-btn:hover {
+      background-color: #00aacc;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    @media (max-width: 500px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      .time-box {
+        min-width: 80px;
+        padding: 15px 18px;
+      }
+
+      .number {
+        font-size: 2rem;
+      }
+
+      .label {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Bacanoriya Ba9i Liha</h1>
+
+  <!-- 🎵 Background music -->
+  <audio autoplay loop hidden id="bg-music" volume="0.3">
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Countdown -->
+  <div class="countdown-container" id="countdown-container">
+    <div class="time-box">
+      <div class="number" id="days">--</div>
+      <div class="label">Days</div>
+    </div>
+    <div class="time-box">
+      <div class="number" id="hours">--</div>
+      <div class="label">Hours</div>
+    </div>
+    <div class="time-box">
+      <div class="number" id="minutes">--</div>
+      <div class="label">Minutes</div>
+    </div>
+    <div class="time-box">
+      <div class="number" id="seconds">--</div>
+      <div class="label">Seconds</div>
+    </div>
+  </div>
+
+  <!-- Share Button -->
+  <button class="share-btn" onclick="copyLink()">📤 Share Countdown</button>
+
+  <script>
+    const targetDate = new Date("May 29, 2025 00:00:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance <= 0) {
+        document.querySelector('h1').textContent = "🔥 Nari 9wdtiha!! 🔥";
+        document.getElementById('countdown-container').innerHTML = `<div class="finished-message">🎉 Nari 9wdtiha!! 🎉</div>`;
+        clearInterval(interval);
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("days").textContent = days;
+      document.getElementById("hours").textContent = hours;
+      document.getElementById("minutes").textContent = minutes;
+      document.getElementById("seconds").textContent = seconds;
+    }
+
+    function copyLink() {
+      const url = window.location.href;
+      navigator.clipboard.writeText(url).then(() => {
+        alert("✅ Link copied! Share it with your friends 😎");
+      });
+    }
+
+    const interval = setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+</body>
+</html>
